@@ -3,7 +3,14 @@ import React, { useState } from 'react'
 const VirusScan = ({ uploadFile }) => {
   const handleSubmit = e => {
     e.preventDefault()
-    uploadFile(file)
+    console.log(file)
+    // uploadFile(file)
+
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      uploadFile(reader.result)
+    }
   }
 
   const [file, setFile] = useState(null)

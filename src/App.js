@@ -12,16 +12,19 @@ const App = () => {
   }, [])
 
   const uploadFile = async file => {
-    const res = await axios.post(
-      'https://www.virustotal.com/vtapi/v2/file/scan',
-      {
-        apikey: process.env.REACT_APP_API_KEY,
+    const res = await axios({
+      url: 'https://www.virustotal.com/vtapi/v2/file/scan',
+      method: 'post',
+      params: {
+        apikey: process.env.REACT_APP_API_KEY
+      },
+      data: {
         file: file
       }
-    )
-
+    })
     setScanMessage(res)
     console.log(res)
+    console.log(file)
   }
 
   return (
