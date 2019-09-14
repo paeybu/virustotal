@@ -13,7 +13,8 @@ const App = () => {
 
   const uploadFile = async file => {
     setLoading(true)
-    const url = 'https://www.virustotal.com/vtapi/v2/file/scan'
+    const url =
+      'https://cors-anywhere.herokuapp.com/https://www.virustotal.com/vtapi/v2/file/scan'
     const config = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -35,7 +36,7 @@ const App = () => {
 
   const reportFile = async md5 => {
     const res = await axios.get(
-      `https://www.virustotal.com/vtapi/v2/file/report?apikey=${process.env.REACT_APP_API_KEY}&resource=${md5}`
+      `https://cors-anywhere.herokuapp.com/https://www.virustotal.com/vtapi/v2/file/report?apikey=${process.env.REACT_APP_API_KEY}&resource=${md5}`
     )
     console.dir(`from reportfile :`)
     console.dir(res.data)
